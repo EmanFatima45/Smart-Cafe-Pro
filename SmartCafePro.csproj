@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>SmartCafePro</AssemblyName>
+    <RootNamespace>SmartCafePro</RootNamespace>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Company>SmartCafe Technologies</Company>
+    <Product>SmartCafe Pro</Product>
+    <Description>Advanced Cafe Management System</Description>
+    <Copyright>Copyright © 2024 SmartCafe Technologies</Copyright>
+    <StartupObject>SmartCafePro.Program</StartupObject>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <!-- NuGet Package References -->
+  <ItemGroup>
+    <!-- SQL Server data access -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.*" />
+
+    <!-- Configuration (connection strings from App.config) -->
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.*" />
+
+    <!-- Optional: Entity Framework Core (alternative to ADO.NET) -->
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.*" /> -->
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.*" /> -->
+
+    <!-- PDF generation -->
+    <PackageReference Include="itext7" Version="8.*" />
+
+    <!-- Excel export -->
+    <PackageReference Include="EPPlus" Version="7.*" />
+    <!-- EPPlus license (non-commercial) -->
+
+    <!-- QR Code generation -->
+    <PackageReference Include="ZXing.Net" Version="0.16.*" />
+    <PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.*" />
+
+    <!-- JSON serialization (for settings, API payloads) -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.*" />
+
+    <!-- VB runtime (used for InputBox in some forms) -->
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.*" />
+  </ItemGroup>
+
+  <!-- Embedded resources -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\**\*" />
+  </ItemGroup>
+
+  <!-- Runtime assets copied beside the executable -->
+  <ItemGroup>
+    <Content Include="Assets\ProductImages\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- App settings file -->
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
